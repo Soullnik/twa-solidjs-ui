@@ -1,0 +1,7 @@
+@use '../../styles/sizes' as *;
+@use '../../styles/colors' as *;
+@use '../../styles/spacings' as *;
+
+.article {
+ padding: $spacing-10;
+}

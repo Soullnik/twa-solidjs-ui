@@ -1,0 +1,7 @@
+@use '../../styles/sizes' as *;
+@use '../../styles/colors' as *;
+@use '../../styles/spacings' as *;
+
+.input-label__required {
+  color: $color-text-destructive;
+}

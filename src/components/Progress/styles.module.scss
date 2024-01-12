@@ -1,0 +1,21 @@
+
+@use '../../styles/sizes' as *;
+@use '../../styles/colors' as *;
+@use '../../styles/spacings' as *;
+.progress {
+  background: $color-subtitle;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  display: flex;
+  height: calc($size-separator-height * 4);
+  width: 100%;
+}
+
+.value {
+  border-radius: 100px;
+  background: $color-text-accent;
+  height: calc($size-separator-height * 4);
+  width: 0;
+  transition: all 0.2s ease;
+}

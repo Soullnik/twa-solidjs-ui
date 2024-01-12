@@ -15,6 +15,17 @@ export default defineConfig(({ mode }) => {
         solid: { generate: testSSR ? 'ssr' : 'dom' },
       }),
     ],
+    css: {
+      modules: {
+        generateScopedName: (name, filename, css) => {
+          console.log({
+            name,
+            filename,
+            css,
+          })
+        },
+      },
+    },
     test: {
       watch: false,
       isolate: !testSSR,

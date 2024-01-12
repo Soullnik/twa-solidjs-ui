@@ -1,0 +1,41 @@
+
+@use '../../styles/sizes' as *;
+@use '../../styles/colors' as *;
+@use '../../styles/spacings' as *;
+.tabs {
+  display: flex;
+  flex-direction: column;
+  padding: 0 $spacing-10;
+}
+
+.navigation {
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  gap: $size-cell-h-padding;
+}
+
+.item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  width: 100%;
+  background-color: inherit;
+  padding: $spacing-10;
+  border-bottom: $color-hint 1px solid;
+  cursor: pointer;
+}
+
+.button:is([aria-current], :hover, :active, :focus) {
+  border-bottom: var(--color-link) 1px solid;
+  color: var(--color-link);
+}
+
+.content {
+  padding-top: var(--spacing-10);
+}

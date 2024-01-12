@@ -1,0 +1,57 @@
+
+@use '../../styles/sizes' as *;
+@use '../../styles/colors' as *;
+@use '../../styles/spacings' as *;
+
+.checkboxWrapper {
+  padding: 15px 0px 5px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 14px;
+  border-radius: 15px;
+  margin: 4px 8px;
+  background-color: $color-hint;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+.checkbox:checked {
+  background-color: $color-bg-button;
+  transition: all 0.2s linear;
+}
+.checkbox::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 14px;
+  height: 14px;
+  top: -2px;
+  left: -3px;
+  border: 2px solid $color-hint;
+  border-radius: 15px;
+  background-color: $color-bg;
+  transition: all 0.2s linear;
+}
+.checkbox:checked::after {
+  left: 10px;
+  border-color: $color-bg-button;
+  transition: all 0.2s linear;
+}
+
+.label {
+  cursor: pointer;
+  color: $color-hint;
+}
+.label:hover {
+  color: $color-bg-button;
+}

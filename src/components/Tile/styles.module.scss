@@ -1,0 +1,19 @@
+@use '../../styles/sizes' as *;
+@use '../../styles/colors' as *;
+@use '../../styles/spacings' as *;
+
+.tile {
+  padding: $spacing-10;
+  background-color: $color-bg-secondary;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 1);
+  border: none;
+  border-radius: $size-border-radius-big;
+  background-size: cover;
+  cursor: pointer;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.tile:hover {
+  background-color: color-mix(in srgb, currentColor 20%, transparent);
+}

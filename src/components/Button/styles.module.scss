@@ -1,0 +1,12 @@
+@use '../../styles/sizes' as *;
+@use '../../styles/colors' as *;
+@use '../../styles/spacings' as *;
+
+.button {
+  background-color: $color-bg-button;
+  color: $color-text-button;
+  cursor: pointer;
+  padding: $spacing-10;
+  border-radius: $size-border-radius-medium;
+  margin: $spacing-10 auto;
+}

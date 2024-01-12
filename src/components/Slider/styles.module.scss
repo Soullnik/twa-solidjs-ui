@@ -1,0 +1,34 @@
+
+@use '../../styles/sizes' as *;
+@use '../../styles/colors' as *;
+@use '../../styles/spacings' as *;
+.swiperContainer {
+  width: 270px;
+  height: 370px;
+}
+
+.swiperSlide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  background-color: $color-bg-secondary;
+}
+
+.swiperSlide.add {
+  border-style: dashed;
+  border-color: $color-text;
+  display: flex;
+  justify-content: center;
+}
+
+.swiperSlide.add input {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  margin: 0 10%;
+}
