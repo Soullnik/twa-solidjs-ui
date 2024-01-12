@@ -27,15 +27,17 @@ export const Tabs: ParentComponent<{ default?: string }> = props => {
     return tabs().find(tab => tab.name === name) || tabs()[0]
   }
 
-  const [selectedTab, setSelectedTab] = createSignal<TabProps<unknown>>(getTab(props.default))
+  const [selectedTab, setSelectedTab] = createSignal<TabProps<unknown> | undefined>(
+    getTab(props.default),
+  )
 
   const renderTabContent = () => {
     const tab = selectedTab()
-    if (tab.fetcher && typeof tab.children === 'function') {
+    if (tab && tab.fetcher && typeof tab.children === 'function') {
       const resource = createResource(tab.fetcher)
       return tab.children(resource)
     }
-    return tab.children
+    return tab?.children
   }
 
   return (

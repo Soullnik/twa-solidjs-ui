@@ -63,7 +63,7 @@ export const Wizard: ParentComponent<WizardProps> = props => {
   }
 
   const text = () => {
-    return steps()[stepIdx()].buttonTitle
+    return steps()[stepIdx()]?.buttonTitle ?? ''
   }
 
   return (
