@@ -1,74 +1,37 @@
-import { RGB, classNames } from '@tma.js/sdk'
-import { useHapticFeedback, useMainButton } from '../../hooks'
-import { Component, Show, createEffect, createSignal, onCleanup } from 'solid-js'
+import { useBackButton } from '../../hooks'
+import { useNavigator } from '../../providers/index'
+import { Component, Show, onCleanup, onMount } from 'solid-js'
 import styles from './styles.module.scss'
+import { classNames } from '@tma.js/sdk'
 
-type MainButtonProps = {
-  color?: RGB
-  text: string
+type BackButtonProps = {
   onClick: VoidFunction
-  loading?: boolean
 }
 
-export const MainButton: Component<MainButtonProps> = props => {
-  const mainButton = useMainButton()
-  const hapticFeedback = useHapticFeedback()
-  const [_] = createSignal(props.loading)
+export const BackButton: Component<BackButtonProps> = props => {
+  const backButton = useBackButton()
+  const navigator = useNavigator()
 
-  const onClickHandler = () => {
-    hapticFeedback().impactOccurred('medium')
-    props.onClick()
+  const onClick = () => {
+    setTimeout(() => {
+      props.onClick()
+    }, 0)
   }
 
-  createEffect(() => {
-    if (mainButton) {
-      mainButton().setText(props.text)
-    }
-  })
-
-  createEffect(() => {
-    if (mainButton) {
-      mainButton().setText(props.text)
-    }
-  })
-
-  createEffect(() => {
-    if (props.color && mainButton) {
-      mainButton().setBackgroundColor(props.color)
-    }
-  })
-
-  createEffect(value => {
-    if (props.onClick !== value && mainButton) {
-      mainButton().off('click', onClickHandler)
-      mainButton().on('click', onClickHandler)
-      if (!mainButton().isVisible) {
-        mainButton().show()
-      }
-    }
-  })
-
-  createEffect(() => {
-    if (mainButton) {
-      if (props.loading) {
-        mainButton().disable().showLoader()
-      } else {
-        mainButton().enable().hideLoader()
-      }
-    }
+  onMount(() => {
+    backButton().on('click', onClick)
+    navigator?.detach()
   })
 
   onCleanup(() => {
-    if (mainButton) {
-      mainButton().off('click', onClickHandler)
-      mainButton().hide()
-    }
+    backButton().off('click', onClick)
+    navigator?.attach()
   })
 
   return (
-    <Show when={!mainButton}>
-      <button onClick={props.onClick} class={classNames(styles.mainButton)}>
-        {props.text}
+    <Show when={!backButton}>
+      <button onClick={props.onClick} class={classNames(styles.backButton)}>
+        {'<-'}
       </button>
     </Show>
   )
