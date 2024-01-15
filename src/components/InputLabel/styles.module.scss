@@ -1,7 +1,6 @@
 @use '../../styles/sizes' as sizes;
 @use '../../styles/colors' as colors;
 @use '../../styles/spacings' as spacings;
-@use '../../styles/normalize' as normalize;
 
 .input-label__required {
   color: $color-text-destructive;
