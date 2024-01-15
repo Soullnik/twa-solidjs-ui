@@ -42,7 +42,8 @@
   "typesVersions": {},
   "scripts": {
     "dev": "vite serve dev",
-    "build": "tsup",
+    "build": "vite build",
+    "build:lib": "tsup",
     "test": "concurrently pnpm:test:*",
     "test:client": "vitest",
     "test:ssr": "pnpm run test:client --mode ssr",

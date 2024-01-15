@@ -1,10 +1,15 @@
 import { defineConfig } from 'tsup'
 import * as preset from 'tsup-preset-solid'
-import { sassPlugin } from 'esbuild-sass-plugin'
+import { postcssModules, sassPlugin } from 'esbuild-sass-plugin'
 
 const preset_options: preset.PresetOptions = {
   // array or single object
-  esbuild_plugins: [sassPlugin()],
+  esbuild_plugins: [
+    sassPlugin({
+      filter: /\.module\.scss$/,
+      transform: postcssModules({}),
+    }),
+  ],
   entries: [
     // default entry (index)
     {

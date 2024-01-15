@@ -1,6 +1,7 @@
-@use '../../styles/sizes' as *;
-@use '../../styles/colors' as *;
-@use '../../styles/spacings' as *;
+@use '../../styles/sizes' as sizes;
+@use '../../styles/colors' as colors;
+@use '../../styles/spacings' as spacings;
+@use '../../styles/normalize' as normalize;
 
 .lottie > svg {
   transform: unset !important;

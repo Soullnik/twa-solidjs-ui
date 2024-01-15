@@ -12,7 +12,7 @@ export const Tile: Component<{
   <button
     class={classNames(styles.tile, props.class)}
     style={{
-      'background-image': `url(${props.picture})`,
+      'background-image': props.picture ? `url(${props.picture})` : 'none',
     }}
     onClick={props.onClick}
   >

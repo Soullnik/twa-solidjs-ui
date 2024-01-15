@@ -1,10 +1,10 @@
-import { Component, Match, Switch, createSignal } from 'solid-js'
+import { Component, Show, createSignal } from 'solid-js'
 import styles from './styles.module.scss'
 import { classNames } from '@tma.js/sdk'
 
 type AvatarProps = {
-  src?: string
-  userName?: string
+  url?: string
+  name?: string
   size: number
 }
 
@@ -22,8 +22,8 @@ export const Avatar: Component<AvatarProps> = props => {
   ]
 
   const abbreviation = () => {
-    if (!props.userName) return ''
-    return props.userName.charAt(0).toUpperCase()
+    if (!props.name) return ''
+    return props.name.charAt(0).toUpperCase()
   }
 
   const backgroundColor = () => {
@@ -36,26 +36,24 @@ export const Avatar: Component<AvatarProps> = props => {
 
   return (
     <div
-      class={classNames(styles.avatar, !props.src ? 'avatar--with-placeholder' : '')}
+      class={classNames(styles.avatar)}
       style={{
         'background-image': backgroundColor(),
         width: `${props.size}px`,
         height: `${props.size}px`,
       }}
     >
-      <Switch>
-        <Match when={isPictureLoaded()}>
-          <img
-            class={styles.img}
-            src={props.src}
-            alt={props.userName ?? ''}
-            onLoad={() => setIsPictureLoaded(true)}
-          />
-        </Match>
-        <Match when={!isPictureLoaded()}>
-          {<div class={styles.placeholder}>{abbreviation()}</div>}
-        </Match>
-      </Switch>
+      <Show
+        when={isPictureLoaded()}
+        fallback={<div class={styles.placeholder}>{abbreviation()}</div>}
+      >
+        <img
+          class={styles.img}
+          src={props.url}
+          alt={props.name ?? ''}
+          onLoad={() => setIsPictureLoaded(true)}
+        />
+      </Show>
     </div>
   )
 }

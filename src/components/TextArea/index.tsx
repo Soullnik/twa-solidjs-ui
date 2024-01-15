@@ -68,7 +68,7 @@ export const TextArea: Component<TextAreaProps> = props => {
     <div
       class={classNames(styles.textareaWrapper, props.class)}
       classList={{
-        [styles.focused]: focused() || !!props.value,
+        [styles.focused as string]: focused() || !!props.value,
       }}
       ref={wrapperRef}
     >

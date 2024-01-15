@@ -88,7 +88,7 @@ export const Input: Component<InputProps> = props => {
     <div
       class={classNames(styles.inputWrapper, props.class)}
       classList={{
-        [styles.focused]: focused() || !!props.value,
+        [styles.focused as string]: focused() || !!props.value,
       }}
       ref={wrapperRef}
     >

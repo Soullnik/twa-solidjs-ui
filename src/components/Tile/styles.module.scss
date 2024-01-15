@@ -1,10 +1,12 @@
-@use '../../styles/sizes' as *;
-@use '../../styles/colors' as *;
-@use '../../styles/spacings' as *;
+@use '../../styles/sizes' as sizes;
+@use '../../styles/colors' as colors;
+@use '../../styles/spacings' as spacings;
+@use '../../styles/normalize' as normalize;
 
 .tile {
   padding: $spacing-10;
   background-color: $color-bg-secondary;
+  color: $color-text;
   text-shadow: 0 2px 3px rgba(0, 0, 0, 1);
   border: none;
   border-radius: $size-border-radius-big;

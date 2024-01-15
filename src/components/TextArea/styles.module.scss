@@ -1,6 +1,7 @@
-@use '../../styles/sizes' as *;
-@use '../../styles/colors' as *;
-@use '../../styles/spacings' as *;
+@use '../../styles/sizes' as sizes;
+@use '../../styles/colors' as colors;
+@use '../../styles/spacings' as spacings;
+@use '../../styles/normalize' as normalize;
 
 .textareaWrapper {
   padding: 15px 0px 5px 0;
@@ -14,7 +15,9 @@
   top: 12px;
   color: $color-hint;
   z-index: 10;
-  transition: transform 150ms ease-out, font-size 150ms ease-out;
+  transition:
+    transform 150ms ease-out,
+    font-size 150ms ease-out;
 }
 
 .textareaWrapper.focused .label {

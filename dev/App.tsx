@@ -26,7 +26,7 @@ import {
   Progress,
   Tile,
   Step,
-} from '../src'
+} from '../dist'
 import images from './images.json'
 import simple from './simple.json'
 
@@ -57,7 +57,7 @@ const App: Component = () => {
           <Match when={tab() === 'browser'}>
             <section class={styles.browser}>
               <Article item="asdf"></Article>
-              <MainButton text="mainButton" onClick={mainButtonHandler}></MainButton>
+              {/* <MainButton text="mainButton" onClick={mainButtonHandler}></MainButton>
               <BackButton onClick={backButtonHandler}></BackButton>
               <Avatar size={40}></Avatar>
               <Button text="Button" onClick={buttonHandler}></Button>
@@ -91,7 +91,7 @@ const App: Component = () => {
                 <Tab name="tab2">{'Tab 2'}</Tab>
               </Tabs>
               <TextArea name="textarea"></TextArea>
-              <Tile></Tile>
+              <Tile text="BLBLBALB"></Tile>
               <Wizard onFinish={() => {}} onExit={() => {}}>
                 <Step buttonTitle="next" title="step1">
                   {'step1'}
@@ -99,13 +99,13 @@ const App: Component = () => {
                 <Step buttonTitle="next" title="step2">
                   {'step2'}
                 </Step>
-              </Wizard>
+              </Wizard> */}
             </section>
           </Match>
           <Match when={tab() === 'tma'}>
             <section class={styles.tma}>
               <Article item="asdf"></Article>
-              <MainButton text="mainButton" onClick={mainButtonHandler}></MainButton>
+              {/* <MainButton text="mainButton" onClick={mainButtonHandler}></MainButton>
               <BackButton onClick={backButtonHandler}></BackButton>
               <Avatar size={40}></Avatar>
               <Button text="Button" onClick={buttonHandler}></Button>
@@ -152,7 +152,7 @@ const App: Component = () => {
                 <Step buttonTitle="next" title="step2">
                   {'step2'}
                 </Step>
-              </Wizard>
+              </Wizard> */}
             </section>
           </Match>
         </Switch>
