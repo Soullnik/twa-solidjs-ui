@@ -1,6 +1,6 @@
-@use '../../styles/sizes' as sizes;
-@use '../../styles/colors' as colors;
-@use '../../styles/spacings' as spacings;
+@use '../../styles/sizes' as *;
+@use '../../styles/colors' as *;
+@use '../../styles/spacings' as *;
 
 .progress {
   background: $color-subtitle;
@@ -8,14 +8,14 @@
   align-items: center;
   position: relative;
   display: flex;
-  height: calc($size-separator-height * 4);
+  height: calc($size-separator-big);
   width: 100%;
 }
 
 .value {
   border-radius: 100px;
   background: $color-text-accent;
-  height: calc($size-separator-height * 4);
+  height: calc($size-separator-big);
   width: 0;
   transition: all 0.2s ease;
 }

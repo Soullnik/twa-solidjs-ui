@@ -1,10 +1,10 @@
-@use '../../styles/sizes' as sizes;
-@use '../../styles/colors' as colors;
-@use '../../styles/spacings' as spacings;
+@use '../../styles/sizes' as *;
+@use '../../styles/colors' as *;
+@use '../../styles/spacings' as *;
 
 .card {
   display: flex;
-  margin: 0 0 $spacing-10 0;
+  margin: 0 0 $spacing-small 0;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;

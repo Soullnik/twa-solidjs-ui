@@ -1,48 +1,25 @@
 import { createContext, useContext, ParentComponent, createSignal } from 'solid-js'
-import { Theme, ThemeName, themes } from 'src/styles/theme'
 
-export type ThemeContextState = {
-  theme: () => Theme
-}
+type Theme = 'dark' | 'light'
 
-export type ThemeContextValue = [
-  state: ThemeContextState,
-  actions: {
-    toggleTheme: (selectTheme: ThemeName) => void
-    themeName: () => ThemeName
-  },
-]
+type ThemeContextValue = [() => Theme, (mode: Theme) => void]
 
-const AppThemeContext = createContext<ThemeContextValue>([
-  {
-    theme: () => themes.dark,
-  },
-  {
-    toggleTheme: () => {},
-    themeName: () => 'dark' as ThemeName,
-  },
-])
+const ThemeContext = createContext<ThemeContextValue>()
 
 export const AppThemeProvider: ParentComponent = props => {
-  const [modeTheme, setModeTheme] = createSignal<ThemeName>('dark')
+  const [modeTheme, setModeTheme] = createSignal<Theme>('dark')
 
-  const toggleTheme = (mode: ThemeName) => {
+  const toggleTheme = (mode: Theme) => {
     setModeTheme(mode)
   }
 
-  const themeName = () => {
+  const theme = () => {
     return modeTheme()
   }
 
-  const theme = () => {
-    return themes[modeTheme()]
-  }
-
   return (
-    <AppThemeContext.Provider value={[{ theme }, { toggleTheme, themeName }]}>
-      {props.children}
-    </AppThemeContext.Provider>
+    <ThemeContext.Provider value={[theme, toggleTheme]}>{props.children}</ThemeContext.Provider>
   )
 }
 
-export const useTheme = () => useContext(AppThemeContext)
+export const useTheme = () => useContext(ThemeContext)

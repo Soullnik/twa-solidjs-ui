@@ -1,6 +1,6 @@
-@use '../../styles/sizes' as sizes;
-@use '../../styles/colors' as colors;
-@use '../../styles/spacings' as spacings;
+@use '../../styles/sizes' as *;
+@use '../../styles/colors' as *;
+@use '../../styles/spacings' as *;
 
 .listContainer {
   display: flex;
@@ -12,7 +12,7 @@
   color: $color-text;
   display: flex;
   flex-direction: column;
-  gap: $spacing-10;
+  gap: $spacing-small;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -25,7 +25,7 @@
 }
 
 .item {
-  padding: $spacing-10;
+  padding: $spacing-small;
   border-radius: $size-border-radius-medium;
   background-color: $color-bg-secondary;
 }

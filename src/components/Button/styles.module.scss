@@ -1,13 +1,15 @@
-@use '../../styles/sizes' as sizes;
-@use '../../styles/colors' as colors;
-@use '../../styles/spacings' as spacings;
+@use '../../styles/sizes' as *;
+@use '../../styles/colors' as *;
+@use '../../styles/spacings' as *;
 
 .button {
   background-color: $color-bg-button;
   color: $color-text-button;
   cursor: pointer;
-  padding: $spacing-10;
+  padding: $spacing-small;
   border-radius: $size-border-radius-medium;
-  margin: $spacing-10 auto;
-  font-family: $normalized_font_family;
+  margin: $spacing-small auto;
+  font-size: 17px;
+  font-family: system-ui, Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
 }

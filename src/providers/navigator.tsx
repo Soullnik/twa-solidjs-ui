@@ -11,8 +11,6 @@ export function createNavigator(): HashNavigator {
     debug: true,
   }
 
-  // If page was reloaded, we assume that navigator had to previously save
-  // its state in the session storage.
   if (retrieveLaunchData().isPageReload) {
     const stateRaw = sessionStorage.getItem('hash-navigator-state')
     if (stateRaw) {
@@ -25,8 +23,6 @@ export function createNavigator(): HashNavigator {
     }
   }
 
-  // In case, we could not restore its state, or it is the fresh start, we
-  // can create empty navigator.
   if (!navigator) {
     navigator = new HashNavigator([{}], 0, navigatorOptions)
   }
@@ -41,11 +37,8 @@ export function createNavigator(): HashNavigator {
     )
   }
 
-  // Whenever navigator changes its state, we save it in the session storage.
   navigator.on('change', ({ navigator: nav }) => saveState(nav))
 
-  // Save initial state to make sure nothing will break when page will
-  // be reloaded.
   saveState(navigator)
 
   return navigator

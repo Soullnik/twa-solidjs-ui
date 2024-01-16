@@ -1,1 +1,31 @@
-IN PROGRESS
+# UI Library for SolidJS and Telegram Mini Apps
+
+## Based on
+- [SolidJS](https://solidjs.com/)
+- [Telegram Mini Apps](https://docs.telegram-mini-apps.com/platform/about-platform)
+- [solid-lib-starter](https://github.com/solidjs-community/solid-lib-starter)
+
+## Components List
+- [x] [MainButton](./MainButton)
+- [x] [BackButton](./BackButton)
+- [x] [Article](./Article)
+- [x] [Avatar](./Avatar)
+- [x] [Button](./Button)
+- [x] [Card](./Card)
+- [x] [CheckBox](./CheckBox)
+- [x] [Details](./Details)
+- [x] [Input](./Input)
+- [x] [InputError](./InputError)
+- [x] [InputLabel](./InputLabel)
+- [x] [List](./List)
+- [x] [Lottie](./Lottie)
+- [x] [Modal](./Modal)
+- [x] [PageTransition](./PageTransition)
+- [x] [Progress](./Progress)
+- [x] [Select](./Select)
+- [x] [Slider](./Slider)
+- [x] [Spinner](./Spinner)
+- [x] [Tabs](./Tabs)
+- [x] [TextArea](./TextArea)
+- [x] [Tile](./Tile)
+- [x] [Wizard](./Wizard)

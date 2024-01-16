@@ -4,12 +4,7 @@ import { postcssModules, sassPlugin } from 'esbuild-sass-plugin'
 
 const preset_options: preset.PresetOptions = {
   // array or single object
-  esbuild_plugins: [
-    sassPlugin({
-      filter: /\.module\.scss$/,
-      transform: postcssModules({}),
-    }),
-  ],
+  esbuild_plugins: [sassPlugin()],
   entries: [
     // default entry (index)
     {
