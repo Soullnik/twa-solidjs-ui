@@ -4,7 +4,13 @@ import { postcssModules, sassPlugin } from 'esbuild-sass-plugin'
 
 const preset_options: preset.PresetOptions = {
   // array or single object
-  esbuild_plugins: [sassPlugin()],
+  esbuild_plugins: [
+    sassPlugin({
+      filter: /\.module\.scss$/,
+      transform: postcssModules({}),
+      type: 'style',
+    }),
+  ],
   entries: [
     // default entry (index)
     {

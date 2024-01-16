@@ -1,4 +1,5 @@
 import { Component, JSX, ParentComponent, Show, children, createSignal } from 'solid-js'
+import { useNavigator } from '../../providers'
 import { PageTransition } from '../PageTransition'
 import { BackButton } from '../BackButton'
 import { MainButton } from '../MainButton'
@@ -7,7 +8,6 @@ import styles from './styles.module.scss'
 
 interface WizardProps {
   onFinish: () => void
-  onExit: () => void
 }
 
 interface StepProps {
@@ -26,7 +26,7 @@ export const Wizard: ParentComponent<WizardProps> = props => {
     Array.isArray(props.children) ? props.children : [props.children],
   ) as unknown as () => StepProps[]
   const [stepIdx, setStepIdx] = createSignal<number>(0)
-
+  const navigator = useNavigator()
   const nextStep = async () => {
     const step = steps()[stepIdx()]
     if (!step) return
@@ -51,9 +51,10 @@ export const Wizard: ParentComponent<WizardProps> = props => {
   }
 
   const backButtonClick = () => {
+    const backCb = navigator?.back ?? function () {}
     const idx = stepIdx()
     const isAtFirstStep = idx === 0
-    return isAtFirstStep ? props.onExit : prevStep
+    return isAtFirstStep ? backCb : prevStep
   }
 
   const mainButtonClick = () => {
@@ -63,7 +64,7 @@ export const Wizard: ParentComponent<WizardProps> = props => {
   }
 
   const text = () => {
-    return steps()[stepIdx()]?.buttonTitle ?? ''
+    return steps()[stepIdx()]!.buttonTitle
   }
 
   return (
