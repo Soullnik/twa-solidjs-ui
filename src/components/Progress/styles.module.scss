@@ -10,12 +10,11 @@
   display: flex;
   height: calc($size-separator-big);
   width: 100%;
-}
-
-.value {
-  border-radius: 100px;
-  background: $color-text-accent;
-  height: calc($size-separator-big);
-  width: 0;
-  transition: all 0.2s ease;
+  .value {
+    border-radius: 100px;
+    background: $color-text-accent;
+    height: calc($size-separator-big);
+    width: 0;
+    transition: all 0.2s ease;
+  }
 }

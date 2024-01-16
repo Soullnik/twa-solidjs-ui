@@ -48,7 +48,7 @@ export const Avatar: Component<AvatarProps> = props => {
         fallback={<div class={styles.placeholder}>{abbreviation()}</div>}
       >
         <img
-          class={styles.img}
+          class={styles.image}
           src={props.url}
           alt={props.name ?? ''}
           onLoad={() => setIsPictureLoaded(true)}

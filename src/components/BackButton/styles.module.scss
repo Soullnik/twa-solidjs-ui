@@ -16,8 +16,7 @@
   font-weight: 500;
   display: none;
   cursor: pointer;
-}
-
-.backButton.visible {
-  display: block;
+  &.visible {
+    display: block;
+  }
 }

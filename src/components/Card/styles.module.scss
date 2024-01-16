@@ -9,8 +9,7 @@
   justify-content: space-between;
   cursor: pointer;
   transition: all ease-in 0.2s;
-}
-
-.card > h2 {
-  margin-bottom: 0;
+  h2 {
+    margin-bottom: 0;
+  }
 }

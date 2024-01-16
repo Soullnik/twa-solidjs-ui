@@ -6,23 +6,20 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-}
-
-.step {
-  padding: $spacing-small;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.header {
-  font-weight: bold;
-  font-size: 2rem;
-  margin-bottom: $spacing-small;
-}
-
-.content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  .step {
+    padding: $spacing-small;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .header {
+      font-weight: bold;
+      font-size: 2rem;
+      margin-bottom: $spacing-small;
+    }
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }

@@ -2,6 +2,8 @@
 @use '../../styles/colors' as *;
 @use '../../styles/spacings' as *;
 
-.lottie > svg {
-  transform: unset !important;
+.lottie {
+  svg {
+    transform: unset !important;
+  }
 }

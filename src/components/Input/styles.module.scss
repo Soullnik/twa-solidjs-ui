@@ -5,30 +5,28 @@
 .inputWrapper {
   padding: 15px 0px 15px 0;
   position: relative;
-}
-
-.label {
-  position: absolute;
-  left: 0;
-  top: 14px;
-  color: $color-hint;
-  z-index: 10;
-  transition:
-    transform 150ms ease-out,
-    font-size 150ms ease-out;
-}
-
-.inputWrapper.focused .label {
-  transform: translateY(-100%);
-  font-size: 0.75em;
-}
-
-.input {
-  position: relative;
-  box-shadow: 0 1px 0 0 $color-hint;
-  transition: box-shadow 150ms ease-out;
-}
-
-.input:focus {
-  box-shadow: 0 2px 0 0 $color-bg-button;
+  .label {
+    position: absolute;
+    left: 0;
+    top: 14px;
+    color: $color-hint;
+    z-index: 10;
+    transition:
+      transform 150ms ease-out,
+      font-size 150ms ease-out;
+  }
+  &.focused {
+    .label {
+      transform: translateY(-100%);
+      font-size: 0.75em;
+    }
+  }
+  .input {
+    position: relative;
+    box-shadow: 0 1px 0 0 $color-hint;
+    transition: box-shadow 150ms ease-out;
+    &:focus {
+      box-shadow: 0 2px 0 0 $color-bg-button;
+    }
+  }
 }

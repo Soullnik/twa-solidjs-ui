@@ -6,36 +6,31 @@
   display: flex;
   flex-direction: column;
   padding: 0 $spacing-small;
-}
+  .navigation {
+    .list {
+      display: flex;
+      justify-content: space-between;
+      gap: $spacing-small;
+      .item {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        .button {
+          width: 100%;
+          background-color: inherit;
+          padding: $spacing-small;
+          border-bottom: $color-hint 1px solid;
+          cursor: pointer;
+          &:is([aria-current], :hover, :active, :focus) {
+            border-bottom: var(--color-link) 1px solid;
+            color: var(--color-link);
+          }
+        }
+      }
+    }
+  }
 
-.navigation {
-}
-
-.list {
-  display: flex;
-  justify-content: space-between;
-  gap: $spacing-small;
-}
-
-.item {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.button {
-  width: 100%;
-  background-color: inherit;
-  padding: $spacing-small;
-  border-bottom: $color-hint 1px solid;
-  cursor: pointer;
-}
-
-.button:is([aria-current], :hover, :active, :focus) {
-  border-bottom: var(--color-link) 1px solid;
-  color: var(--color-link);
-}
-
-.content {
-  padding-top: var(--spacing-10);
+  .content {
+    padding-top: var(--spacing-10);
+  }
 }
