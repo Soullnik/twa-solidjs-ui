@@ -7,15 +7,11 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  margin: 10px 0;
-  padding: 0px;
-  border-width: 0;
   text-decoration: none;
+  border-width: 0;
   cursor: pointer;
-  font-size: 100%;
   background-color: $color-bg-button;
   color: $color-text-button;
-  cursor: pointer;
   padding: $spacing-small;
   border-radius: $size-border-radius-medium;
   margin: $spacing-small auto;

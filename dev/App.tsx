@@ -141,8 +141,12 @@ const App: Component = () => {
               </Article>
               <Article title={'Tabs'}>
                 <Tabs>
-                  <Tab name="tab1">{'Tab 1'}</Tab>
-                  <Tab name="tab2">{'Tab 2'}</Tab>
+                  <Tab text="Tab1" name="tab1">
+                    {'Tab 1'}
+                  </Tab>
+                  <Tab text="Tab2" name="tab2">
+                    {'Tab 2'}
+                  </Tab>
                 </Tabs>
               </Article>
               <Article title={'Wizard'}>
