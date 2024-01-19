@@ -10,7 +10,10 @@
   .content {
     box-sizing: border-box;
     position: relative;
-    padding: 20px 0px 20px 0;
+    padding-top: 20px;
+    &.error {
+      padding-bottom: 20px;
+    }
     .label {
       position: absolute;
       left: 0;

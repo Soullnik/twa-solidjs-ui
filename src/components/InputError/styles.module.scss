@@ -4,5 +4,9 @@
 
 .inputError {
   box-sizing: border-box;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0 5px;
+  margin: 0;
   color: $color-text-destructive;
 }
