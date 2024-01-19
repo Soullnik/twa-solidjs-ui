@@ -3,10 +3,26 @@
 @use '../../styles/spacings' as *;
 
 .button {
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  border-width: 0;
+  cursor: pointer;
   background-color: $color-bg-button;
   color: $color-text-button;
-  cursor: pointer;
-  padding: $spacing-10;
+  padding: $spacing-small;
   border-radius: $size-border-radius-medium;
-  margin: $spacing-10 auto;
+  margin: $spacing-small auto;
+  font-size: 17px;
+  font-family: system-ui, Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
 }

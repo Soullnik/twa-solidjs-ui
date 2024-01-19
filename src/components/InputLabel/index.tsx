@@ -14,8 +14,8 @@ type InputLabelProps = {
 export const InputLabel: Component<InputLabelProps> = (props: InputLabelProps) => {
   return (
     <Show when={props.label}>
-      <label class={classNames('input-label', props.class)} for={props.name}>
-        {props.label} {props.required && <span class="input-label__required">*</span>}
+      <label class={classNames(styles.label, props.class)} for={props.name}>
+        {props.label} {props.required && <span class={styles.required}>*</span>}
       </label>
     </Show>
   )

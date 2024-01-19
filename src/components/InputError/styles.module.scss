@@ -3,5 +3,6 @@
 @use '../../styles/spacings' as *;
 
 .inputError {
+  box-sizing: border-box;
   color: $color-text-destructive;
 }

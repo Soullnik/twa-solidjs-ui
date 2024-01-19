@@ -6,35 +6,35 @@
   padding: 15px 0px 5px 0;
   position: relative;
   display: flex;
-}
-
-.label {
-  position: absolute;
-  left: 0;
-  top: 12px;
-  color: $color-hint;
-  z-index: 10;
-  transition: transform 150ms ease-out, font-size 150ms ease-out;
-}
-
-.textareaWrapper.focused .label {
-  transform: translateY(-100%);
-  font-size: 0.75em;
-  bottom: 33px;
-}
-
-.textarea {
-  position: relative;
-  width: 100%;
-  outline: 0;
-  border: 0;
-  resize: none;
-  box-shadow: 0 0 0 1px $color-hint;
-  background-color: $color-bg;
-  color: $color-text;
-  transition: box-shadow 150ms ease-out;
-}
-
-.textarea:focus {
-  box-shadow: 0 0 0 2px $color-bg-button;
+  .label {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: $color-hint;
+    z-index: 10;
+    transition:
+      transform 150ms ease-out,
+      font-size 150ms ease-out;
+  }
+  &.focused {
+    .label {
+      transform: translateY(-100%);
+      font-size: 0.75em;
+      bottom: 33px;
+    }
+  }
+  .textarea {
+    position: relative;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    resize: none;
+    box-shadow: 0 0 0 1px $color-hint;
+    background-color: $color-bg;
+    color: $color-text;
+    transition: box-shadow 150ms ease-out;
+    &:focus {
+      box-shadow: 0 0 0 2px $color-bg-button;
+    }
+  }
 }

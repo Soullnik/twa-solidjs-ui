@@ -3,23 +3,20 @@
 @use '../../styles/spacings' as *;
 
 .backButton {
-    padding: 12px 18px;
-    border-radius: 7px;
-    color: $color-link;
-    background-color: $color-bg;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 9;
-  
-    font-size: 17px;
-    font-family: system-ui, Inter, Avenir, Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    display: none;
-    cursor: pointer;
-  }
-  
-  .backButton.visible {
+  padding: 12px 18px;
+  border-radius: 7px;
+  color: $color-link;
+  background-color: $color-bg;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 9;
+  font-size: 17px;
+  font-family: system-ui, Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  display: none;
+  cursor: pointer;
+  &.visible {
     display: block;
   }
-  
+}

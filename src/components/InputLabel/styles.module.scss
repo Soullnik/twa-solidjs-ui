@@ -2,6 +2,14 @@
 @use '../../styles/colors' as *;
 @use '../../styles/spacings' as *;
 
-.input-label__required {
-  color: $color-text-destructive;
+.label {
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0 5px;
+  margin: 0;
+  .required {
+    box-sizing: border-box;
+    color: $color-text-destructive;
+  }
 }

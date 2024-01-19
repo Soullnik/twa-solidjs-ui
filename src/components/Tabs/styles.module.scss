@@ -1,41 +1,58 @@
-
 @use '../../styles/sizes' as *;
 @use '../../styles/colors' as *;
 @use '../../styles/spacings' as *;
+
 .tabs {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: 0 $spacing-10;
-}
+  padding: 0 $spacing-small;
+  gap: $spacing-small;
+  .navigation {
+    box-sizing: border-box;
+    .list {
+      box-sizing: border-box;
+      display: flex;
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      justify-content: space-between;
+      gap: $spacing-small;
+      .item {
+        box-sizing: border-box;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        .button {
+          color: $color-text-button;
+          box-sizing: border-box;
+          width: 100%;
+          background-color: inherit;
+          border-width: 0;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          text-decoration: none;
+          padding: $spacing-small;
+          border-bottom: $color-hint 1px solid;
+          font-family: system-ui, Inter, Avenir, Helvetica, Arial, sans-serif;
+          font-weight: 500;
+          &::-moz-focus-inner {
+            border: 0;
+            padding: 0;
+          }
+          cursor: pointer;
+          &:is([aria-current], :hover, :active, :focus) {
+            border-bottom: $color-link 1px solid;
+            color: $color-link;
+          }
+        }
+      }
+    }
+  }
 
-.navigation {
-}
-
-.list {
-  display: flex;
-  justify-content: space-between;
-  gap: $size-cell-h-padding;
-}
-
-.item {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.button {
-  width: 100%;
-  background-color: inherit;
-  padding: $spacing-10;
-  border-bottom: $color-hint 1px solid;
-  cursor: pointer;
-}
-
-.button:is([aria-current], :hover, :active, :focus) {
-  border-bottom: var(--color-link) 1px solid;
-  color: var(--color-link);
-}
-
-.content {
-  padding-top: var(--spacing-10);
+  .content {
+    box-sizing: border-box;
+    padding-top: var(--spacing-10);
+  }
 }

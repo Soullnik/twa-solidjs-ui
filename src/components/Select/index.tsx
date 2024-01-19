@@ -59,7 +59,7 @@ export function Select(props: SelectProps) {
     <div
       class={classNames(styles.selectWrapper, props.class)}
       classList={{
-        [styles.focused]: focused() || !!props.value,
+        [styles.focused as string]: focused() || !!props.value,
       }}
       ref={wrapperRef}
     >

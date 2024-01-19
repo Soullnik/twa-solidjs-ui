@@ -1,28 +1,26 @@
-
 @use '../../styles/sizes' as *;
 @use '../../styles/colors' as *;
 @use '../../styles/spacings' as *;
+
 .wizard {
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   height: 100%;
-}
-
-.step {
-  padding: $spacing-10;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.header {
-  font-weight: bold;
-  font-size: 2rem;
-  margin-bottom: $spacing-10;
-}
-
-.content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  .step {
+    padding: $spacing-small;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .header {
+      font-weight: bold;
+      font-size: 2rem;
+      margin-bottom: $spacing-small;
+    }
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }

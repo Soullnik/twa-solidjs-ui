@@ -4,13 +4,12 @@
 
 .card {
   display: flex;
-  margin: 0 0 $spacing-10 0;
+  margin: 0 0 $spacing-small 0;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
   transition: all ease-in 0.2s;
-}
-
-.card > h2 {
-  margin-bottom: 0;
+  h2 {
+    margin-bottom: 0;
+  }
 }

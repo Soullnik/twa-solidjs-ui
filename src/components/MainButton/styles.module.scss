@@ -3,17 +3,12 @@
 @use '../../styles/spacings' as *;
 
 .mainButton {
-    padding: 20px;
-    color: #fff;
-    background-color: $color-bg-button;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-  
-    font-size: 17px;
-    font-family: system-ui, Inter, Avenir, Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  
+  padding: 20px;
+  color: #fff;
+  background-color: $color-bg-button;
+
+  font-size: 17px;
+  font-family: system-ui, Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}

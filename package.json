@@ -42,11 +42,12 @@
   "typesVersions": {},
   "scripts": {
     "dev": "vite serve dev",
-    "build": "tsup",
+    "build": "vite build",
+    "build:lib": "tsup",
     "test": "concurrently pnpm:test:*",
     "test:client": "vitest",
     "test:ssr": "pnpm run test:client --mode ssr",
-    "prepublishOnly": "pnpm build",
+    "prepublishOnly": "pnpm build:lib",
     "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" \"dev/**/*.{js,ts,json,css,tsx,jsx}\"",
     "lint": "concurrently pnpm:lint:*",
     "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx}",
@@ -58,7 +59,10 @@
     "@tma.js/sdk": "^1.0.0",
     "@tma.js/sdk-solid": "^1.0.0",
     "@tma.js/solid-router-integration": "^1.0.0",
-    "solid-js": "^1.6.0"
+    "solid-js": "^1.6.0",
+    "solid-transition-group": "^0.2.3",
+    "solid-icons": "^1.1.0",
+    "@solid-primitives/scheduled": "^1.4.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.17.0",
@@ -71,6 +75,7 @@
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-no-only-tests": "^3.1.0",
     "jsdom": "^23.0.1",
+    "postcss-modules": "^6.0.0",
     "prettier": "3.1.1",
     "sass": "^1.69.7",
     "tsup": "^8.0.1",
@@ -92,10 +97,7 @@
     "pnpm": ">=8.6.0"
   },
   "dependencies": {
-    "@solid-primitives/scheduled": "^1.4.1",
     "lottie-web": "^5.12.2",
-    "solid-icons": "^1.1.0",
-    "solid-transition-group": "^0.2.3",
     "swiper": "^11.0.5"
   }
 }

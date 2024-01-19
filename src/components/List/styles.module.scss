@@ -6,26 +6,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+  .list {
+    color: $color-text;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-small;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .empty {
+    display: flex;
+    justify-content: center;
+  }
 
-.list {
-  color: $color-text;
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-10;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-.empty {
-  display: flex;
-  justify-content: center;
-}
-
-.item {
-  padding: $spacing-10;
-  border-radius: $size-border-radius-medium;
-  background-color: $color-bg-secondary;
+  .item {
+    padding: $spacing-small;
+    border-radius: $size-border-radius-medium;
+    background-color: $color-bg-secondary;
+  }
 }

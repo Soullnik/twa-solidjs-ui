@@ -1,2 +1,2 @@
 import './slider'
-import './styles'
+import './styled'

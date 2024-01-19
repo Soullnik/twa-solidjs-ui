@@ -5,14 +5,10 @@ $size-avatar-big: 84px;
 $size-border-radius-small: 8px;
 $size-border-radius-medium: 10px;
 $size-border-radius-big: 13px;
-$size-border-radius-large: 16px;
 
-$size-cell-min-height: 44px;
-$size-cell-h-margin: 16px;
-$size-cell-v-margin: 16px;
-$size-cell-h-padding: 16px;
-$size-cell-v-padding: 4px;
-$size-separator-height: 1px;
+$size-separator-small: 1px;
+$size-separator-medium: 3px;
+$size-separator-big: 5px;
 
-$viewport-height: var(--tg-viewport-height, 100%);
-$viewport-width: var(--tg-viewport-width, 100%);
+$viewport-height: var(--tg-viewport-height, 100dvh);
+$viewport-width: var(--tg-viewport-width, 100dvw);

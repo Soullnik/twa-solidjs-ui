@@ -285,7 +285,7 @@ export const Lottie: VoidComponent<LottieProps> = props => {
 
   return (
     <div
-      class="lottie"
+      class={styles.lottie}
       {...others}
       style={{
         width: local.width ?? '100%',

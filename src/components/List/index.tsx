@@ -1,5 +1,4 @@
 import { Accessor, For, JSX, Resource, Show } from 'solid-js'
-import { Dynamic } from 'solid-js/web'
 import { Spinner } from '../Spinner'
 import { isAccessor, isResource } from '../../utils'
 
@@ -7,8 +6,8 @@ import styles from './styles.module.scss'
 
 interface ListProps<T> {
   items?: Resource<T[]> | T[] | Accessor<T[]>
-  component?: (props: { item: T; index: number }) => JSX.Element
   fallback?: JSX.Element
+  children: (props: { item: T; index: number }) => JSX.Element | JSX.Element
 }
 
 export function List<T>(props: ListProps<T>) {
@@ -36,11 +35,7 @@ export function List<T>(props: ListProps<T>) {
             }
           >
             {(item, index) => {
-              return (
-                <li class={styles.item}>
-                  <Dynamic component={props.component} item={item} index={index()}></Dynamic>
-                </li>
-              )
+              return <li class={styles.item}>{props.children({ item, index: index() })}</li>
             }}
           </For>
         </ul>
