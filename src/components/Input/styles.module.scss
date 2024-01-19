@@ -5,7 +5,6 @@
 .input {
   box-sizing: border-box;
   width: 100%;
-  max-width: 300px;
   font-size: 1rem;
   font-family: inherit;
   .content {
@@ -30,6 +29,7 @@
       top: 50%;
       transform: translateY(-50%);
       margin: 0 5px 0 0;
+      color: $color-text;
       cursor: pointer;
     }
     .field {
@@ -47,6 +47,23 @@
       &:focus {
         box-shadow: 0 $size-separator-medium 0 0 $color-bg-button;
       }
+      &:not(:placeholder-shown),
+      &:focus {
+        & + .label {
+          top: 0;
+          transform: translateY(0%);
+          font-size: 0.75em;
+        }
+      }
+      &:-webkit-autofill {
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+          transition-delay: 9999s;
+          transition-property: $color-bg, color;
+        }
+      }
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
         -webkit-appearance: none;
@@ -60,13 +77,6 @@
       position: absolute;
       bottom: 0;
       left: 0;
-    }
-  }
-  &.focused {
-    .label {
-      top: 0;
-      transform: translateY(0%);
-      font-size: 0.75em;
     }
   }
 }

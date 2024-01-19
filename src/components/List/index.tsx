@@ -8,6 +8,7 @@ interface ListProps<T> {
   items?: Resource<T[]> | T[] | Accessor<T[]>
   fallback?: JSX.Element
   children: (props: { item: T; index: number }) => JSX.Element | JSX.Element
+  onClick: (props: { item: T; index: number }) => void
 }
 
 export function List<T>(props: ListProps<T>) {
@@ -35,7 +36,11 @@ export function List<T>(props: ListProps<T>) {
             }
           >
             {(item, index) => {
-              return <li class={styles.item}>{props.children({ item, index: index() })}</li>
+              return (
+                <li class={styles.item} onClick={() => props.onClick({ item, index: index() })}>
+                  {props.children({ item, index: index() })}
+                </li>
+              )
             }}
           </For>
         </ul>

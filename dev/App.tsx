@@ -93,10 +93,11 @@ const App: Component = () => {
               </Article>
               <Article title={'Inputs'}>
                 <Input
-                  onInput={e => console.log(e)}
+                  onInput={value => console.log(value)}
                   name="input"
                   type="text"
                   label={'text input'}
+                  debounce={300}
                 ></Input>
                 <Input name="input-number" type="number" label={'number input'}></Input>
                 <Input type="text" name="input-req" label={'req input'} required></Input>

@@ -1,13 +1,4 @@
-import {
-  Component,
-  JSX,
-  splitProps,
-  createSignal,
-  onMount,
-  onCleanup,
-  createEffect,
-  Show,
-} from 'solid-js'
+import { JSX, splitProps, createSignal, Show } from 'solid-js'
 import { debounce } from '@solid-primitives/scheduled'
 import { classNames } from '@tma.js/sdk'
 import { InputError } from '../InputError'
@@ -25,7 +16,6 @@ type InputProps = {
   onInput?: JSX.EventHandler<HTMLInputElement, InputEvent>
   onChange?: JSX.EventHandler<HTMLInputElement, Event>
   onBlur?: JSX.EventHandler<HTMLInputElement, FocusEvent>
-  placeholder?: string
   required?: boolean
   class?: string
   label?: string
@@ -36,11 +26,8 @@ type InputProps = {
   padding?: 'none'
 }
 
-export const Input: Component<InputProps> = props => {
-  let wrapperRef: HTMLDivElement | undefined
+export function Input(props: InputProps) {
   let inputRef: HTMLInputElement | undefined
-  const [focused, setFocused] = createSignal<boolean>(false)
-  const [touched, setTouched] = createSignal<boolean>(false)
   const [value, setValue] = createSignal<string>(props.value?.toString() ?? '')
 
   const [, inputProps] = splitProps(props, [
@@ -51,42 +38,30 @@ export const Input: Component<InputProps> = props => {
     'label',
     'error',
     'padding',
-    'placeholder',
   ])
 
   const trigger = debounce(
     (
-      value: InputEvent & {
+      event: InputEvent & {
         currentTarget: HTMLInputElement
-        target: Element
+        target: HTMLInputElement
       },
     ) => {
       if (!props.onInput) return
-
-      props.onInput(value)
+      if (props.debounce) {
+        props.onInput(event)
+      }
     },
     props.debounce ?? 0,
   )
 
-  const onInput: JSX.EventHandler<HTMLInputElement, InputEvent> = e => {
-    setValue(e.currentTarget.value)
+  const onInput: JSX.InputEventHandler<HTMLInputElement, InputEvent> = e => {
+    setValue(e.target.value)
     if (!props.onInput) return
-
     if (props.debounce) {
       trigger(e)
     } else {
       props.onInput(e)
-    }
-  }
-
-  const onFocusToggle: JSX.EventHandler<HTMLInputElement, FocusEvent> = e => {
-    if (!touched()) {
-      setTouched(true)
-    }
-    if (wrapperRef?.classList.contains(styles.focused)) {
-      setFocused(false)
-    } else {
-      setFocused(true)
     }
   }
 
@@ -102,25 +77,14 @@ export const Input: Component<InputProps> = props => {
     inputRef = ref
   }
 
-  const isRequireError = () => {
-    return !value() && props.required && touched() && !focused() ? `${props.label} is required` : ''
-  }
-
   return (
-    <div
-      class={classNames(styles.input, props.class, props.platform ?? 'ios')}
-      classList={{
-        [styles.focused as string]: focused() || !!value(),
-      }}
-      ref={wrapperRef}
-    >
-      <div class={styles.content}>
-        <InputLabel
-          class={classNames(styles.label)}
-          name={props.name}
-          label={props.label}
-          required={props.required}
-        />
+    <div class={classNames(styles.input, props.class)}>
+      <div
+        class={styles.content}
+        classList={{
+          error: !!props.error,
+        }}
+      >
         <input
           class={styles.field}
           ref={handleRef}
@@ -128,17 +92,18 @@ export const Input: Component<InputProps> = props => {
           id={props.name}
           value={value()}
           onInput={onInput}
-          onFocus={onFocusToggle}
-          onBlur={onFocusToggle}
+          placeholder={''}
+        />
+        <InputLabel
+          class={classNames(styles.label)}
+          name={props.name}
+          label={props.label}
+          required={props.required}
         />
         <Show when={value()}>
           <IoCloseOutline class={styles.cross} onClick={onClear} />
         </Show>
-        <InputError
-          class={styles.error}
-          error={props.error || isRequireError()}
-          name={props.name}
-        />
+        <InputError class={styles.error} error={props.error} name={props.name} />
       </div>
     </div>
   )

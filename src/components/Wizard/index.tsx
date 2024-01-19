@@ -6,14 +6,10 @@ import { MainButton } from '../MainButton'
 import { Progress } from '../Progress'
 import styles from './styles.module.scss'
 
-interface WizardProps {
-  onFinish: () => void
-}
-
 interface StepProps {
   title?: string
   children: JSX.Element
-  validate?: () => boolean | Promise<boolean>
+  onNext: () => boolean | Promise<boolean>
   buttonTitle: string
 }
 
@@ -21,7 +17,7 @@ export const Step: Component<StepProps> = props => {
   return props as unknown as JSX.Element
 }
 
-export const Wizard: ParentComponent<WizardProps> = props => {
+export const Wizard: ParentComponent = props => {
   const steps = children(() =>
     Array.isArray(props.children) ? props.children : [props.children],
   ) as unknown as () => StepProps[]
@@ -30,7 +26,7 @@ export const Wizard: ParentComponent<WizardProps> = props => {
   const nextStep = async () => {
     const step = steps()[stepIdx()]
     if (!step) return
-    const currentValidation = step.validate ? await step.validate() : true
+    const currentValidation = await step.onNext()
     if (currentValidation && stepIdx() < steps().length - 1) {
       setStepIdx(stepIdx() + 1)
     }
@@ -57,12 +53,6 @@ export const Wizard: ParentComponent<WizardProps> = props => {
     return isAtFirstStep ? backCb : prevStep
   }
 
-  const mainButtonClick = () => {
-    const idx = stepIdx()
-    const isAtLastStep = idx === steps().length - 1
-    return isAtLastStep ? props.onFinish : nextStep
-  }
-
   const text = () => {
     return steps()[stepIdx()]!.buttonTitle
   }
@@ -81,7 +71,7 @@ export const Wizard: ParentComponent<WizardProps> = props => {
           </div>
         </Show>
       </PageTransition>
-      <MainButton text={text()} onClick={mainButtonClick()} />
+      <MainButton text={text()} onClick={() => nextStep()} />
     </div>
   )
 }

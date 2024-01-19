@@ -3,10 +3,12 @@
 @use '../../styles/spacings' as *;
 
 .listContainer {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   .list {
+    box-sizing: border-box;
     color: $color-text;
     display: flex;
     flex-direction: column;
@@ -17,13 +19,18 @@
     width: 100%;
   }
   .empty {
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
   }
 
   .item {
+    box-sizing: border-box;
     padding: $spacing-small;
     border-radius: $size-border-radius-medium;
     background-color: $color-bg-secondary;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
