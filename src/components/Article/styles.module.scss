@@ -3,5 +3,30 @@
 @use '../../styles/spacings' as *;
 
 .article {
-  padding: $spacing-small;
+  box-sizing: border-box;
+  padding: $spacing-medium $spacing-big;
+  margin: $spacing-small;
+  height: fit-content;
+  min-height: 200px;
+  border-radius: $size-border-radius-medium;
+  border: $size-separator-small solid $color-bg-tertiary;
+  background-color: $color-bg-secondary;
+  display: flex;
+  flex-direction: column;
+  color: $color-text;
+  font-family: system-ui, Inter, Avenir, Helvetica, Arial, sans-serif;
+  .title {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+  }
+  .divider {
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .container {
+    box-sizing: border-box;
+    flex: 1;
+  }
 }

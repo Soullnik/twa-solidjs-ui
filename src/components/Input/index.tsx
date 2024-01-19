@@ -1,13 +1,24 @@
-import { Component, JSX, splitProps, createMemo, createSignal, onMount, onCleanup } from 'solid-js'
+import {
+  Component,
+  JSX,
+  splitProps,
+  createSignal,
+  onMount,
+  onCleanup,
+  createEffect,
+  Show,
+} from 'solid-js'
 import { debounce } from '@solid-primitives/scheduled'
 import { classNames } from '@tma.js/sdk'
 import { InputError } from '../InputError'
 import { InputLabel } from '../InputLabel'
+import { IoCloseOutline } from 'solid-icons/io'
 
 import styles from './styles.module.scss'
 
 type InputProps = {
   ref?: (element: HTMLInputElement) => void
+  platform?: 'ios' | 'android'
   type: 'text' | 'email' | 'tel' | 'password' | 'url' | 'number' | 'date'
   name: string
   value?: string | number | undefined
@@ -27,9 +38,14 @@ type InputProps = {
 
 export const Input: Component<InputProps> = props => {
   let wrapperRef: HTMLDivElement | undefined
-  const [focused, setFocused] = createSignal(false)
+  let inputRef: HTMLInputElement | undefined
+  const [focused, setFocused] = createSignal<boolean>(false)
+  const [touched, setTouched] = createSignal<boolean>(false)
+  const [value, setValue] = createSignal<string>(props.value?.toString() ?? '')
 
   const [, inputProps] = splitProps(props, [
+    'ref',
+    'platform',
     'class',
     'value',
     'label',
@@ -37,12 +53,6 @@ export const Input: Component<InputProps> = props => {
     'padding',
     'placeholder',
   ])
-
-  const getValue = createMemo<string | number | undefined>(
-    prevValue =>
-      props.value === undefined ? '' : !Number.isNaN(props.value) ? props.value : prevValue,
-    '',
-  )
 
   const trigger = debounce(
     (
@@ -59,6 +69,7 @@ export const Input: Component<InputProps> = props => {
   )
 
   const onInput: JSX.EventHandler<HTMLInputElement, InputEvent> = e => {
+    setValue(e.currentTarget.value)
     if (!props.onInput) return
 
     if (props.debounce) {
@@ -68,44 +79,67 @@ export const Input: Component<InputProps> = props => {
     }
   }
 
-  const handleClick = (event: MouseEvent) => {
-    if (!wrapperRef?.contains(event.target as Node)) {
+  const onFocusToggle: JSX.EventHandler<HTMLInputElement, FocusEvent> = e => {
+    if (!touched()) {
+      setTouched(true)
+    }
+    if (wrapperRef?.classList.contains(styles.focused)) {
       setFocused(false)
     } else {
       setFocused(true)
     }
   }
 
-  onMount(() => {
-    document.addEventListener('click', handleClick)
-  })
+  const onClear = () => {
+    setValue('')
+    inputRef?.dispatchEvent(new Event('input', { bubbles: true }))
+  }
 
-  onCleanup(() => {
-    document.removeEventListener('click', handleClick)
-  })
+  const handleRef = (ref: HTMLInputElement) => {
+    if (props.ref) {
+      props.ref(ref)
+    }
+    inputRef = ref
+  }
+
+  const isRequireError = () => {
+    return !value() && props.required && touched() && !focused() ? `${props.label} is required` : ''
+  }
 
   return (
     <div
-      class={classNames(styles.inputWrapper, props.class)}
+      class={classNames(styles.input, props.class, props.platform ?? 'ios')}
       classList={{
-        [styles.focused as string]: focused() || !!props.value,
+        [styles.focused as string]: focused() || !!value(),
       }}
       ref={wrapperRef}
     >
-      <InputLabel
-        class={styles.label}
-        name={props.name}
-        label={props.label}
-        required={props.required}
-      />
-      <input
-        class={styles.input}
-        {...inputProps}
-        id={props.name}
-        value={getValue()}
-        onInput={onInput}
-      />
-      <InputError error={props.error} name={props.name} />
+      <div class={styles.content}>
+        <InputLabel
+          class={classNames(styles.label)}
+          name={props.name}
+          label={props.label}
+          required={props.required}
+        />
+        <input
+          class={styles.field}
+          ref={handleRef}
+          {...inputProps}
+          id={props.name}
+          value={value()}
+          onInput={onInput}
+          onFocus={onFocusToggle}
+          onBlur={onFocusToggle}
+        />
+        <Show when={value()}>
+          <IoCloseOutline class={styles.cross} onClick={onClear} />
+        </Show>
+        <InputError
+          class={styles.error}
+          error={props.error || isRequireError()}
+          name={props.name}
+        />
+      </div>
     </div>
   )
 }

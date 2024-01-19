@@ -9,7 +9,7 @@ type AvatarProps = {
 }
 
 export const Avatar: Component<AvatarProps> = props => {
-  const [isPictureLoaded, setIsPictureLoaded] = createSignal<boolean>()
+  const [isPictureLoaded, setIsPictureLoaded] = createSignal<boolean>(false)
 
   const bgColors = [
     ['#ff885e', '#ff516a'],
@@ -43,10 +43,10 @@ export const Avatar: Component<AvatarProps> = props => {
         height: `${props.size}px`,
       }}
     >
-      <Show
-        when={isPictureLoaded()}
-        fallback={<div class={styles.placeholder}>{abbreviation()}</div>}
-      >
+      <Show when={!isPictureLoaded()}>
+        <div class={styles.placeholder}>{abbreviation()}</div>
+      </Show>
+      <Show when={props.url}>
         <img
           class={styles.image}
           src={props.url}

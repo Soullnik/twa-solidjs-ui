@@ -3,6 +3,16 @@
 @use '../../styles/spacings' as *;
 
 .button {
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 10px 0;
+  padding: 0px;
+  border-width: 0;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 100%;
   background-color: $color-bg-button;
   color: $color-text-button;
   cursor: pointer;
@@ -12,4 +22,11 @@
   font-size: 17px;
   font-family: system-ui, Inter, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 500;
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
 }
